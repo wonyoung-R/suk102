@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숙원 | 한국 전통 서각 작가</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="숙원 - 한국 전통 서각 작가의 작품과 이야기">
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">숙원</div>
+            <ul class="nav-links">
+                <li><a href="#hero">홈</a></li>
+                <li><a href="#about">서각이란?</a></li>
+                <li><a href="#artist">작가소개</a></li>
+                <li><a href="interview.html">작가인터뷰</a></li>
+                <li><a href="#gallery">작품소개</a></li>
+                <li><a href="#contact">문의</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <section id="hero" class="section">
+        <div class="hero-content">
+            <h1>숙원</h1>
+            <h2>한국 전통 서각 예술가</h2>
+            <p>나무에 새겨진 시간과 정신</p>
+            <a href="#gallery" class="btn">작품 보기</a>
+        </div>
+    </section>
+
+    <!-- 서각이란? -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">서각이란?</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>서각(書刻)은 한자로 '글씨 서(書)'와 '새길 각(刻)'의 합성어로, 나무나 돌과 같은 재료에 글씨나 그림을 새기는 전통 예술입니다.</p>
+                    <p>단순한 기술을 넘어 수천 년간 이어져 온 한국의 정신문화를 담아내는 예술 형식으로, 글씨의 아름다움과 나무의 질감이 어우러져 깊은 내면의 울림을 전달합니다.</p>
+                    <p>붓으로 종이에 쓰는 서예와 달리, 서각은 조각도를 이용해 나무에 새겨 입체적인 아름다움을 표현하는 예술입니다.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/carving-process-1.jpg" alt="서각 작업 과정">
+                </div>
+            </div>
+            <div class="about-tools">
+                <h3>서각 도구</h3>
+                <div class="tools-gallery">
+                    <img src="images/tools.jpg" alt="서각 도구들">
+                    <div class="tools-description">
+                        <p>서각 예술가는 다양한 조각도를 사용하여 섬세한 작업을 진행합니다. 평도, 전도, 환도, 삼각도 등 각각의 도구는 서로 다른 선과 깊이를 표현하는데 활용됩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 작가소개 -->
+    <section id="artist" class="section">
+        <div class="container">
+            <h2 class="section-title">작가소개</h2>
+            <div class="artist-profile">
+                <div class="artist-image">
+                    <img src="images/artist-profile.jpg" alt="숙원 작가">
+                </div>
+                <div class="artist-info">
+                    <h3>숙원 <span class="en-name">(Sukwon)</span></h3>
+                    <p class="birth">1954년 출생</p>
+                    <p>40년 경력의 전통 서각 장인으로, 한국 전통 문화의 아름다움을 나무에 새기는 작업을 해오고 있습니다.</p>
+                    <p>전통적인 기법과 현대적 감각을 조화시킨 작품들로 한국 서각 예술의 계승과 발전에 기여하고 있습니다.</p>
+                    <p>특히 고서의 글귀와 명현들의 휘호를 정교하게 재현하는 작업과 현대적 공간에 어울리는 생활 서각 작품 제작에 힘쓰고 있습니다.</p>
+                    <div class="artist-specialty">
+                        <h4>전문 분야</h4>
+                        <ul>
+                            <li>전통 서각</li>
+                            <li>주문제작</li>
+                            <li>예술작품 2차 생산</li>
+                            <li>생활예술</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 작품소개 -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">작품소개</h2>
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">전체</button>
+                <button class="filter-btn" data-filter="traditional">전통 서각</button>
+                <button class="filter-btn" data-filter="modern">현대 서각</button>
+                <button class="filter-btn" data-filter="functional">실용 서각</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="traditional">
+                    <img src="images/artwork-1.jpg" alt="서각 작품 1">
+                    <div class="item-overlay">
+                        <h3>사군자 - 매화</h3>
+                        <p>소나무에 조각, 2018</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="traditional">
+                    <img src="images/artwork-2.jpg" alt="서각 작품 2">
+                    <div class="item-overlay">
+                        <h3>행복 (幸福)</h3>
+                        <p>참죽나무에 조각, 2019</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="modern">
+                    <img src="images/artwork-3.jpg" alt="서각 작품 3">
+                    <div class="item-overlay">
+                        <h3>산수유정 (山水有情)</h3>
+                        <p>느티나무에 조각, 2020</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="functional">
+                    <img src="images/artwork-4.jpg" alt="서각 작품 4">
+                    <div class="item-overlay">
+                        <h3>다기세트 - 차명 (茶名)</h3>
+                        <p>단풍나무에 조각, 2021</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="traditional">
+                    <img src="images/artwork-5.jpg" alt="서각 작품 5">
+                    <div class="item-overlay">
+                        <h3>명상 (冥想)</h3>
+                        <p>흑단에 조각, 2022</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="modern">
+                    <img src="images/artwork-6.jpg" alt="서각 작품 6">
+                    <div class="item-overlay">
+                        <h3>자연의 소리</h3>
+                        <p>월넛에 조각, 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 주문제작 문의 -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">주문제작 문의</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>연락처</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 010-1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> suk102@example.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 서울특별시 종로구</li>
+                    </ul>
+                    <div class="opening-hours">
+                        <h4>작업실 운영시간</h4>
+                        <p>월-금: 10:00 - 18:00</p>
+                        <p>토: 10:00 - 15:00 (예약제)</p>
+                        <p>일: 휴무</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>문의하기</h3>
+                    <form id="inquiry-form">
+                        <div class="form-group">
+                            <label for="name">이름</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">이메일</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">연락처</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiry-type">문의 유형</label>
+                            <select id="inquiry-type" name="inquiry-type">
+                                <option value="custom">주문 제작</option>
+                                <option value="purchase">작품 구매</option>
+                                <option value="exhibition">전시 문의</option>
+                                <option value="other">기타</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">문의 내용</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">문의하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 플로팅 버튼 -->
+    <div class="floating-btn">
+        <a href="#contact">작품 문의하기</a>
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>숙원</h3>
+                    <p>한국 전통 서각 작가</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#hero">홈</a></li>
+                        <li><a href="#about">서각이란?</a></li>
+                        <li><a href="#artist">작가소개</a></li>
+                        <li><a href="interview.html">작가인터뷰</a></li>
+                        <li><a href="#gallery">작품소개</a></li>
+                        <li><a href="#contact">문의</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 숙원. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
