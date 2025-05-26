@@ -37,26 +37,59 @@
         </div>
     </section>
 
+    <style>
+        #hero {
+            background-image: url('images/sukone.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        #hero:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+
     <!-- 서각이란? -->
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">서각이란?</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>서각(書刻)은 한자로 '글씨 서(書)'와 '새길 각(刻)'의 합성어로, 나무나 돌과 같은 재료에 글씨나 그림을 새기는 전통 예술입니다.</p>
-                    <p>단순한 기술을 넘어 수천 년간 이어져 온 한국의 정신문화를 담아내는 예술 형식으로, 글씨의 아름다움과 나무의 질감이 어우러져 깊은 내면의 울림을 전달합니다.</p>
-                    <p>붓으로 종이에 쓰는 서예와 달리, 서각은 조각도를 이용해 나무에 새겨 입체적인 아름다움을 표현하는 예술입니다.</p>
+                    <p>서각(書刻)은 한자로 '글씨 서(書)'와 '새길 각(刻)'의 합성어로, 나무나 돌과 같은 재료에 글씨나 그림을 새기는 전통 예술입니다. 한국에서는 '각자장(刻字匠)' 또는 '각자장'이라고 불리는 장인들이 이 기술을 계승해왔습니다.</p>
+                    <p>한국의 서각 역사는 삼국시대까지 거슬러 올라가며, 불경을 새겨 인쇄하는 목판 인쇄의 발전과 함께 발전했습니다. 세계에서 가장 오래된 목판인쇄물로 알려진 '무구정광대다라니경'은 경주 불국사 석가탑에서 발견되었으며, 신라시대인 751년경에 제작된 것으로 추정됩니다.</p>
+                    <p>고려시대에는 불교 경전과 문학 작품의 출판이 번성하면서 목판 서각이 전성기를 맞이했습니다. 특히 팔만대장경(해인사 장경판전)은 1236년부터 1251년까지 15년에 걸쳐 제작된 8만여 장의 목판으로, 그 정교함과 보존 상태가 뛰어나 유네스코 세계문화유산으로 등재되었습니다.</p>
                 </div>
                 <div class="about-image">
-                    <img src="images/carving-process-1.jpg" alt="서각 작업 과정">
+                    <img src="https://koreajoongangdaily.joins.com/data/photo/2022/08/04/9cdda1a5-4d61-4e91-8a5c-2fe55cc18c8b.jpg" alt="서각 작업 과정">
                 </div>
             </div>
             <div class="about-tools">
-                <h3>서각 도구</h3>
+                <h3>서각 기법과 도구</h3>
                 <div class="tools-gallery">
-                    <img src="images/tools.jpg" alt="서각 도구들">
+                    <img src="https://koreajoongangdaily.joins.com/data/photo/2022/08/04/c5ad03d1-c45c-43ce-8cd7-f99b85fad72e.jpg" alt="서각 도구들">
                     <div class="tools-description">
-                        <p>서각 예술가는 다양한 조각도를 사용하여 섬세한 작업을 진행합니다. 평도, 전도, 환도, 삼각도 등 각각의 도구는 서로 다른 선과 깊이를 표현하는데 활용됩니다.</p>
+                        <p>서각에는 '반서각(反書刻)'과 '정서각(正書刻)' 두 가지 기본 기법이 있습니다. 반서각은 인쇄용 글자를 거꾸로 새기는 기법이고, 정서각은 현판처럼 바로 읽을 수 있도록 글자를 새기는 기법입니다.</p>
+                        <p>서각 예술가는 목판을 준비하는 '침목(沈木)', 글자 간격을 배정하는 '배자(排字)', 그리고 실제 새기는 '각자(刻字)' 과정을 거칩니다. 이 작업을 위해 톱, 대패, 자, 고무줄과 같은 도구와 함께 평도, 환도, 삼각도 등 다양한 형태의 조각칼을 사용합니다.</p>
                     </div>
                 </div>
             </div>
@@ -69,21 +102,21 @@
             <h2 class="section-title">작가소개</h2>
             <div class="artist-profile">
                 <div class="artist-image">
-                    <img src="images/artist-profile.jpg" alt="숙원 작가">
+                    <img src="images/sukone.png" alt="숙원 작가">
                 </div>
                 <div class="artist-info">
                     <h3>숙원 <span class="en-name">(Sukwon)</span></h3>
                     <p class="birth">1954년 출생</p>
-                    <p>40년 경력의 전통 서각 장인으로, 한국 전통 문화의 아름다움을 나무에 새기는 작업을 해오고 있습니다.</p>
-                    <p>전통적인 기법과 현대적 감각을 조화시킨 작품들로 한국 서각 예술의 계승과 발전에 기여하고 있습니다.</p>
-                    <p>특히 고서의 글귀와 명현들의 휘호를 정교하게 재현하는 작업과 현대적 공간에 어울리는 생활 서각 작품 제작에 힘쓰고 있습니다.</p>
+                    <p>40년 경력의 전통 서각 장인으로, 한국 전통 각자 기술을 계승하고 발전시키는 작업을 해오고 있습니다.</p>
+                    <p>서각 예술의 두 가지 기본 기법인 '반서각(反書刻)'과 '정서각(正書刻)'을 모두 능숙하게 구사하며, 전통적인 기법과 현대적 감각을 조화시킨 작품들로 한국 서각 예술의 가치를 널리 알리고 있습니다.</p>
+                    <p>다양한 나무의 특성을 살려 소나무, 참죽나무, 느티나무, 단풍나무, 흑단, 월넛 등 여러 목재를 사용하여 작품을 제작합니다. 특히 오래된 사찰과 고궁의 현판 복원 작업에 참여한 경험이 있으며, 전통 문화 유산의 보존과 계승에 힘쓰고 있습니다.</p>
                     <div class="artist-specialty">
                         <h4>전문 분야</h4>
                         <ul>
                             <li>전통 서각</li>
-                            <li>주문제작</li>
-                            <li>예술작품 2차 생산</li>
-                            <li>생활예술</li>
+                            <li>현판 및 목판 제작</li>
+                            <li>고문서 복원</li>
+                            <li>현대적 서각 작품</li>
                         </ul>
                     </div>
                 </div>
@@ -103,47 +136,53 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item" data-category="traditional">
-                    <img src="images/artwork-1.jpg" alt="서각 작품 1">
+                    <img src="images/KB01.png" alt="달마">
                     <div class="item-overlay">
-                        <h3>사군자 - 매화</h3>
-                        <p>소나무에 조각, 2018</p>
+                        <h3>달마</h3>
+                        <p>경봉스님</p>
+                        <p class="item-description">전통적인 서각 기법으로 새긴 작품으로, 화법을 익혀서 그리는 그림이 아니라 신수행의 결과.</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="traditional">
-                    <img src="images/artwork-2.jpg" alt="서각 작품 2">
+                    <img src="images/KB02-jinunbulchuilgu.png" alt="진언불출구">
                     <div class="item-overlay">
-                        <h3>행복 (幸福)</h3>
-                        <p>참죽나무에 조각, 2019</p>
+                        <h3>진언(참다운 말)은 말로 표출할 수 없다.</h3>
+                        <p>탄허대종사</p>
+                        <p class="item-description">불교신문 200호 기념 휘호 1967년 6월 11일자</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="modern">
-                    <img src="images/artwork-3.jpg" alt="서각 작품 3">
+                    <img src="images/KMG01.png" alt="달마">
                     <div class="item-overlay">
-                        <h3>산수유정 (山水有情)</h3>
-                        <p>느티나무에 조각, 2020</p>
+                        <h3>달마</h3>
+                        <p>김명국</p>
+                        <p class="item-description">현재 국립 중앙 박물관 소장</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="functional">
-                    <img src="images/artwork-4.jpg" alt="서각 작품 4">
+                    <img src="images/KMG02-bum.png" alt="범소유">
                     <div class="item-overlay">
-                        <h3>다기세트 - 차명 (茶名)</h3>
-                        <p>단풍나무에 조각, 2021</p>
+                        <h3>범소유</h3>
+                        <p>"범소유상 개시허망 약견제상 비상즉견 여래"</p>
+                        <p class="item-description">무릇 형상을 지닌 것은 다 허망한 것이니 만약 모든 상이 실상이 아님을 알면 곧 여래를 보리라."</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="traditional">
-                    <img src="images/artwork-5.jpg" alt="서각 작품 5">
+                <!-- <div class="gallery-item" data-category="traditional">
+                    <img src="https://koreajoongangdaily.joins.com/data/photo/2022/08/04/5f823bd3-9e1c-4e10-83c9-ab6a9c4baf17.jpg" alt="서각 작품 5">
                     <div class="item-overlay">
-                        <h3>명상 (冥想)</h3>
-                        <p>흑단에 조각, 2022</p>
+                        <h3>옴 마니 파드메 훔 (Om mani padme hum)</h3>
+                        <p>흑단에 산스크리트어 정서각 기법으로 조각, 2022</p>
+                        <p class="item-description">불교의 대표적인 진언인 '옴 마니 파드메 훔'을 산스크리트어로 새긴 작품으로, 명상과 정신적 안정을 위한 공간에 어울립니다.</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="modern">
-                    <img src="images/artwork-6.jpg" alt="서각 작품 6">
+                    <img src="https://koreajoongangdaily.joins.com/data/photo/2022/08/04/eef98063-40c2-40ce-bde7-80693dc2a72e.jpg" alt="서각 작품 6">
                     <div class="item-overlay">
-                        <h3>자연의 소리</h3>
-                        <p>월넛에 조각, 2023</p>
+                        <h3>판전 (板殿)</h3>
+                        <p>월넛에 추사 김정희 서체 정서각 기법으로 조각, 2023</p>
+                        <p class="item-description">조선 후기 서예가 김정희의 '판전' 글씨를 현대적으로 재해석한 작품으로, 전통 서예의 아름다움과 목판의 질감이 어우러진 작품입니다.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -204,7 +243,7 @@
 
     <!-- 플로팅 버튼 -->
     <div class="floating-btn">
-        <a href="#contact">작품 문의하기</a>
+        <a href="https://litt.ly/suk102">상점이동</a>
     </div>
 
     <!-- 푸터 -->

@@ -627,6 +627,13 @@ img {
     margin-bottom: 0.5rem;
 }
 
+.item-description {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
 /* 주문제작 문의 섹션 */
 #contact {
     background-color: var(--bg-cream);
