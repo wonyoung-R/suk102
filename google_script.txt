@@ -12,7 +12,7 @@
  */
 
 // 스프레드시트 ID를 여기에 입력하세요 (URL에서 /d/ 다음, /edit 이전 부분)
-const SPREADSHEET_ID = '1-XdLdhhcnL-4c0glaT-UyoCSGy-lS3tcMzbxD2m-J34U';
+const SPREADSHEET_ID = '1-XdLdhhcnL-4c0glaT-UyoCSGy-lS3tcMzbxD2m-J34';
 const SHEET_NAME = 'Sheet1'; // 데이터를 저장할 시트 이름
 
 // 성공 페이지 HTML
