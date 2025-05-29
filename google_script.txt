@@ -15,11 +15,85 @@
 const SPREADSHEET_ID = '1-XdLdhhcnL-4c0glaT-UyoCSGy-lS3tcMzbxD2m-J34U';
 const SHEET_NAME = 'Sheet1'; // 데이터를 저장할 시트 이름
 
+// 성공 페이지 HTML
+function successHtml() {
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문의가 접수되었습니다</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f9f5f0;
+    }
+    .success-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #784212;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #333;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .close-btn {
+      background-color: #784212;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .close-btn:hover {
+      background-color: #a86832;
+    }
+  </style>
+  <script>
+    // 자동 창 닫기 - 3초 후
+    window.onload = function() {
+      setTimeout(function() {
+        window.close();
+      }, 3000);
+    }
+  </script>
+</head>
+<body>
+  <div class="success-container">
+    <h1>문의가 접수되었습니다</h1>
+    <p>문의 내용이 성공적으로 전송되었습니다. 빠른 시일 내에 답변 드리겠습니다.</p>
+    <p>이 창은 자동으로 닫힙니다.</p>
+    <button class="close-btn" onclick="window.close()">창 닫기</button>
+  </div>
+</body>
+</html>
+  `;
+}
+
 // 웹 앱으로 POST 요청을 처리하는 함수
 function doPost(e) {
   try {
-    // 요청 본문 파싱
-    const data = JSON.parse(e.postData.contents);
+    // 폼 데이터 파싱
+    const data = {
+      timestamp: e.parameter.timestamp || new Date().toISOString(),
+      name: e.parameter.name || '',
+      email: e.parameter.email || '',
+      phone: e.parameter.phone || '',
+      inquiryType: e.parameter.inquiryType || '',
+      message: e.parameter.message || ''
+    };
     
     // 스프레드시트와 시트 열기
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -57,25 +131,25 @@ function doPost(e) {
     // 모든 열 자동 크기 조정
     sheet.autoResizeColumns(1, 6);
     
-    // 성공 응답 반환
-    return ContentService.createTextOutput(JSON.stringify({
-      result: 'success',
-      message: '문의가 성공적으로 기록되었습니다.'
-    })).setMimeType(ContentService.MimeType.JSON);
+    // 성공 페이지 반환
+    return HtmlService.createHtmlOutput(successHtml())
+      .setTitle('문의가 접수되었습니다');
     
   } catch (error) {
-    // 오류 발생 시 에러 응답 반환
-    return ContentService.createTextOutput(JSON.stringify({
-      result: 'error',
-      message: error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
+    // 오류 발생 시 에러 메시지
+    return HtmlService.createHtmlOutput(`
+      <h1>오류가 발생했습니다</h1>
+      <p>${error.toString()}</p>
+      <button onclick="window.close()">창 닫기</button>
+    `);
   }
 }
 
-// 웹 앱으로 GET 요청을 처리하는 함수 (테스트용)
+// 웹 앱으로 GET 요청을 처리하는 함수
 function doGet() {
-  return ContentService.createTextOutput(JSON.stringify({
-    result: 'success',
-    message: '숙원 웹사이트 문의 폼 API가 정상적으로 작동 중입니다.'
-  })).setMimeType(ContentService.MimeType.JSON);
+  return HtmlService.createHtmlOutput(`
+    <h1>숙원 웹사이트 문의 폼 API</h1>
+    <p>이 페이지는 문의 폼 데이터를 처리하기 위한 API입니다.</p>
+    <p>문의 폼을 통해 데이터를 제출해 주세요.</p>
+  `);
 } 
