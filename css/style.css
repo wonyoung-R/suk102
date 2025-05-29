@@ -733,6 +733,7 @@ img {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     font-weight: 700;
     transition: var(--transition);
+    width: 240px;
 }
 
 .floating-btn a:hover {
@@ -845,6 +846,10 @@ footer {
     .modal-content {
         width: 95%;
         padding: 1.5rem;
+    }
+    
+    .floating-btn a {
+        width: auto;
     }
 }
 
