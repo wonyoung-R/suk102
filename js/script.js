@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 message: document.getElementById('message').value
             };
             
-            // Google 스프레드시트 웹 앱 URL
+            // Google 스프레드시트 웹 앱 URL - 새로 배포한 웹 앱 URL로 업데이트하세요
             const scriptURL = 'https://script.google.com/macros/s/AKfycbyLtjbGrAG0vCz2-vG67bBZMBR_h8NZ_tG3A2rZuFaTh9M8pqn3fC32XCvI5oXIE3xT/exec';
             
             // 데이터 전송
@@ -108,7 +108,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(formData),
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                redirect: 'follow',
+                mode: 'cors'
             })
             .then(response => {
                 if (response.ok) {
