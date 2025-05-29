@@ -102,36 +102,47 @@ document.addEventListener('DOMContentLoaded', function() {
             // Google 스프레드시트 웹 앱 URL - 새로 배포한 웹 앱 URL로 업데이트하세요
             const scriptURL = 'https://script.google.com/macros/s/AKfycbyLtjbGrAG0vCz2-vG67bBZMBR_h8NZ_tG3A2rZuFaTh9M8pqn3fC32XCvI5oXIE3xT/exec';
             
-            // 데이터 전송
-            fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                redirect: 'follow',
-                mode: 'cors'
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('제출 중 오류가 발생했습니다.');
-                }
-            })
-            .then(data => {
-                formStatus.innerHTML = '<div style="color: green;">문의가 성공적으로 제출되었습니다. 감사합니다!</div>';
-                inquiryForm.reset();
-                
-                // 3초 후 상태 메시지 숨기기
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 3000);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                formStatus.innerHTML = '<div style="color: red;">문의 제출 중 오류가 발생했습니다. 나중에 다시 시도해주세요.</div>';
+            // JSONP 방식으로 데이터 전송 (CORS 우회)
+            // 임시 폼 생성
+            const tempForm = document.createElement('form');
+            tempForm.method = 'POST';
+            tempForm.action = scriptURL;
+            tempForm.target = '_blank'; // 새 창에서 응답 열기
+            tempForm.style.display = 'none';
+            
+            // 데이터를 hidden input으로 변환
+            Object.keys(formData).forEach(key => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = formData[key];
+                tempForm.appendChild(input);
             });
+            
+            // 폼을 문서에 추가하고 제출
+            document.body.appendChild(tempForm);
+            
+            // 임시 창에서 제출 후 자동 닫히도록 처리
+            const popup = window.open('about:blank', '_blank', 'width=600,height=400');
+            tempForm.submit();
+            
+            // 성공 메시지 표시
+            formStatus.innerHTML = '<div style="color: green;">문의가 성공적으로 제출되었습니다. 감사합니다!</div>';
+            inquiryForm.reset();
+            
+            // 3초 후 상태 메시지 숨기기
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+                // 팝업창 닫기
+                if (popup) {
+                    popup.close();
+                }
+            }, 3000);
+            
+            // 임시 폼 제거
+            setTimeout(() => {
+                document.body.removeChild(tempForm);
+            }, 500);
         });
     }
 
