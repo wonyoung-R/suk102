@@ -1,0 +1,24 @@
+{
+  "name": "suk102",
+  "version": "1.0.0",
+  "description": "한국 전통 서각 작가 \"숙원 유호석\"의 랜딩 페이지입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wonyoung-R/suk102.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wonyoung-R/suk102/issues"
+  },
+  "homepage": "https://github.com/wonyoung-R/suk102#readme",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
