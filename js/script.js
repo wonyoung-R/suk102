@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const message = document.getElementById('message').value;
             
             // Google 스프레드시트 웹 앱 URL - Apps Script 배포 URL
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxZO1_CLEblxPwqPGtdhYOq2oH-DdNGmIMv_yPUWWdq2S_j_mx_0JNdcsvTJfm3r4v6Jg/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzeP6q_jnMDyq7Yss4STCMlwaMnhs_0Y0Pvd4sSsFkKLKPul0VhK_ZWPAprdY_sK52YzA/exec';
             
             // URL 파라미터 생성
             const url = new URL(scriptURL);
