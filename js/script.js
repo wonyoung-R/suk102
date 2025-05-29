@@ -108,6 +108,8 @@ document.addEventListener('DOMContentLoaded', function() {
             url.searchParams.append('phone', phone);
             url.searchParams.append('inquiryType', inquiryType);
             url.searchParams.append('message', message);
+            // 캐싱 방지를 위한 고유 식별자 추가
+            url.searchParams.append('random', Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15));
             
             // 이미지 로드 방식으로 데이터 전송 (CORS 우회)
             const img = new Image();
