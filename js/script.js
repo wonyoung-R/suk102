@@ -116,13 +116,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const timeout = setTimeout(() => {
                 // 성공으로 처리 (실제로는 성공했는지 모르지만 사용자 경험을 위해)
                 formStatus.className = 'form-status success';
-                formStatus.innerHTML = '<div>문의가 제출되었습니다. 감사합니다!</div>';
+                formStatus.innerHTML = '<div>문의가 제출되었습니다. 감사합니다!<br>확인되는대로 연락드리겠습니다.</div>';
                 inquiryForm.reset();
                 
-                // 3초 후 상태 메시지 숨기기
+                // 2초 후 상태 메시지 숨기기
                 setTimeout(() => {
                     formStatus.style.display = 'none';
-                }, 3000);
+                }, 2000);
             }, 5000);
             
             // 이미지 로드 완료 이벤트
@@ -131,13 +131,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 성공 메시지 표시
                 formStatus.className = 'form-status success';
-                formStatus.innerHTML = '<div>문의가 성공적으로 제출되었습니다. 감사합니다!</div>';
+                formStatus.innerHTML = '<div>문의가 성공적으로 제출되었습니다. 감사합니다!<br>확인되는대로 연락드리겠습니다.</div>';
                 inquiryForm.reset();
                 
-                // 3초 후 상태 메시지 숨기기
+                // 2초 후 상태 메시지 숨기기
                 setTimeout(() => {
                     formStatus.style.display = 'none';
-                }, 3000);
+                }, 2000);
             };
             
             // 이미지 로드 실패 이벤트
@@ -150,13 +150,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 성공 메시지 표시 (데이터는 전송됨)
                 formStatus.className = 'form-status success';
-                formStatus.innerHTML = '<div>문의가 제출되었습니다. 감사합니다!</div>';
+                formStatus.innerHTML = '<div>문의가 제출되었습니다. 감사합니다!<br>확인되는대로 연락드리겠습니다.</div>';
                 inquiryForm.reset();
                 
-                // 3초 후 상태 메시지 숨기기
+                // 2초 후 상태 메시지 숨기기
                 setTimeout(() => {
                     formStatus.style.display = 'none';
-                }, 3000);
+                }, 2000);
             };
             
             // 이미지 로드 시작 (실제로는 URL 호출)
