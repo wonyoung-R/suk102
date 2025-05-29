@@ -85,9 +85,10 @@ document.addEventListener('DOMContentLoaded', function() {
         inquiryForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // 폼 상태 표시 초기화
+            // 폼 상태 표시 초기화 - 로딩 스피너 표시
+            formStatus.className = 'form-status loading';
             formStatus.style.display = 'block';
-            formStatus.innerHTML = '<div style="color: #666;">제출 중입니다...</div>';
+            formStatus.innerHTML = '<div class="loader"></div><div style="margin-top: 15px;">제출 중입니다...</div>';
             
             // 폼 데이터 수집
             const formData = {
@@ -103,13 +104,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const scriptURL = 'https://script.google.com/macros/s/AKfycbz6wwkXQyIlRYBMeHFWZY62wGtz3p2g47Bwpkmv-n_0sav0j9BKpA3Vn0SlDt2RbOV-pg/exec';
             
             try {
-                console.log("폼 제출 시작 - 임시 폼 생성");
-                // JSONP 방식으로 데이터 전송 (CORS 우회)
+                console.log("폼 제출 시작");
+                
+                // 숨겨진 iframe 생성
+                let iframe = document.createElement('iframe');
+                iframe.name = 'hidden-iframe';
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+                
                 // 임시 폼 생성
                 const tempForm = document.createElement('form');
                 tempForm.method = 'POST';
                 tempForm.action = scriptURL;
-                tempForm.target = '_blank'; // 새 창에서 응답 열기
+                tempForm.target = 'hidden-iframe'; // iframe에서 응답 받기
                 tempForm.style.display = 'none';
                 
                 // 데이터를 hidden input으로 변환
@@ -124,43 +131,57 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 폼을 문서에 추가하고 제출
                 document.body.appendChild(tempForm);
                 
-                console.log("폼 제출 준비 완료 - 팝업 열기 시도");
-                // 임시 창에서 제출 후 자동 닫히도록 처리
-                const popup = window.open('about:blank', '_blank', 'width=600,height=400');
-                
-                if (!popup || popup.closed || typeof popup.closed === 'undefined') {
-                    console.log("팝업 차단됨 - 같은 창에서 제출");
-                    tempForm.target = '_self';
-                } else {
-                    console.log("팝업 열림 성공");
-                }
-                
                 console.log("폼 제출 시도");
                 tempForm.submit();
                 console.log("폼 제출 완료");
                 
-                // 성공 메시지 표시
-                formStatus.innerHTML = '<div style="color: green;">문의가 성공적으로 제출되었습니다. 감사합니다!</div>';
-                inquiryForm.reset();
+                // iframe 로드 이벤트 리스너 추가
+                iframe.onload = function() {
+                    // 성공 메시지 표시
+                    formStatus.className = 'form-status success';
+                    formStatus.innerHTML = '<div>문의가 성공적으로 제출되었습니다. 감사합니다!</div>';
+                    inquiryForm.reset();
+                    
+                    // 3초 후 상태 메시지 숨기기
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 3000);
+                    
+                    // 임시 폼과 iframe 제거
+                    setTimeout(() => {
+                        if (tempForm && tempForm.parentNode) {
+                            document.body.removeChild(tempForm);
+                        }
+                        if (iframe && iframe.parentNode) {
+                            document.body.removeChild(iframe);
+                        }
+                    }, 500);
+                };
+                
+                // 5초 후에도 응답이 없으면 타임아웃 처리
+                setTimeout(() => {
+                    if (iframe && iframe.parentNode) {
+                        // 성공 메시지 표시 (제출은 성공했다고 가정)
+                        formStatus.className = 'form-status success';
+                        formStatus.innerHTML = '<div>문의가 제출되었습니다. 감사합니다!</div>';
+                        inquiryForm.reset();
+                        
+                        // 상태 메시지 숨기기
+                        setTimeout(() => {
+                            formStatus.style.display = 'none';
+                        }, 3000);
+                    }
+                }, 5000);
+                
+            } catch (error) {
+                console.error("폼 제출 중 오류 발생:", error);
+                formStatus.className = 'form-status error';
+                formStatus.innerHTML = '<div>문의 제출 중 오류가 발생했습니다. 나중에 다시 시도해주세요.</div>';
                 
                 // 3초 후 상태 메시지 숨기기
                 setTimeout(() => {
                     formStatus.style.display = 'none';
-                    // 팝업창 닫기
-                    if (popup && !popup.closed) {
-                        popup.close();
-                    }
                 }, 3000);
-                
-                // 임시 폼 제거
-                setTimeout(() => {
-                    if (tempForm && tempForm.parentNode) {
-                        document.body.removeChild(tempForm);
-                    }
-                }, 500);
-            } catch (error) {
-                console.error("폼 제출 중 오류 발생:", error);
-                formStatus.innerHTML = '<div style="color: red;">문의 제출 중 오류가 발생했습니다. 나중에 다시 시도해주세요.</div>';
             }
         });
     }
