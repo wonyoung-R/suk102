@@ -733,7 +733,7 @@ img {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     font-weight: 700;
     transition: var(--transition);
-    width: 240px;
+    width: 480px;
 }
 
 .floating-btn a:hover {
