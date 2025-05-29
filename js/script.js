@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 message: document.getElementById('message').value
             };
             
-            // Google 스프레드시트 웹 앱 URL - 새로 배포한 웹 앱 URL로 업데이트하세요
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyzBYbC8kPfOYt-XFg9D0OkdvOmR8gEg-Nw8hFj65zLPNuXXgWDiL4Iz1cZYLKP-EE/exec';
+            // Google 스프레드시트 웹 앱 URL - Apps Script 배포 URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbz6wwkXQyIlRYBMeHFWZY62wGtz3p2g47Bwpkmv-n_0sav0j9BKpA3Vn0SlDt2RbOV-pg/exec';
             
             try {
                 console.log("폼 제출 시작 - 임시 폼 생성");
