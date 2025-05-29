@@ -22,9 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     
-    hamburger.addEventListener('click', function() {
-        navLinks.classList.toggle('show');
-    });
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+    }
 
     // 네비게이션 링크 클릭시 스크롤 애니메이션
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -54,37 +56,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
     
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // 모든 active 클래스 제거
-            filterBtns.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // 클릭된 버튼에 active 클래스 추가
-            this.classList.add('active');
-            
-            const filter = this.getAttribute('data-filter');
-            
-            galleryItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
+    if (filterBtns.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 활성화 버튼 변경
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // 필터링
+                const filter = this.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
             });
         });
-    });
+    }
 
-    // 폼 제출 처리
-    const form = document.getElementById('inquiry-form');
-    
-    if (form) {
-        form.addEventListener('submit', function(e) {
+    // 문의 폼 제출 이벤트
+    const inquiryForm = document.getElementById('inquiry-form');
+    const formStatus = document.getElementById('form-status');
+
+    if (inquiryForm) {
+        inquiryForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // 폼 상태 표시 초기화
+            formStatus.style.display = 'block';
+            formStatus.innerHTML = '<div style="color: #666;">제출 중입니다...</div>';
             
             // 폼 데이터 수집
             const formData = {
+                timestamp: new Date().toISOString(),
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
@@ -92,11 +99,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 message: document.getElementById('message').value
             };
             
-            // 폼 제출 성공 메시지 표시 (실제 서버 전송은 생략)
-            alert('문의가 성공적으로 제출되었습니다. 곧 연락드리겠습니다.');
+            // Google 스프레드시트 웹 앱 URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyLtjbGrAG0vCz2-vG67bBZMBR_h8NZ_tG3A2rZuFaTh9M8pqn3fC32XCvI5oXIE3xT/exec';
             
-            // 폼 초기화
-            form.reset();
+            // 데이터 전송
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('제출 중 오류가 발생했습니다.');
+                }
+            })
+            .then(data => {
+                formStatus.innerHTML = '<div style="color: green;">문의가 성공적으로 제출되었습니다. 감사합니다!</div>';
+                inquiryForm.reset();
+                
+                // 3초 후 상태 메시지 숨기기
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                formStatus.innerHTML = '<div style="color: red;">문의 제출 중 오류가 발생했습니다. 나중에 다시 시도해주세요.</div>';
+            });
         });
     }
 
