@@ -131,17 +131,18 @@ function doPost(e) {
     // 모든 열 자동 크기 조정
     sheet.autoResizeColumns(1, 6);
     
-    // 성공 페이지 반환
-    return HtmlService.createHtmlOutput(successHtml())
-      .setTitle('문의가 접수되었습니다');
+    // 간단한 성공 응답
+    return HtmlService.createHtmlOutput(
+      '<html><body><script>window.onload = function() { parent.postMessage("success", "*"); }</script><p>처리 완료</p></body></html>'
+    )
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
     
   } catch (error) {
     // 오류 발생 시 에러 메시지
-    return HtmlService.createHtmlOutput(`
-      <h1>오류가 발생했습니다</h1>
-      <p>${error.toString()}</p>
-      <button onclick="window.close()">창 닫기</button>
-    `);
+    return HtmlService.createHtmlOutput(
+      '<html><body><script>window.onload = function() { parent.postMessage("error", "*"); }</script><p>오류: ' + error.toString() + '</p></body></html>'
+    )
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
   }
 }
 
