@@ -898,4 +898,23 @@ footer {
     .modal-content {
         padding: 1rem;
     }
+}
+
+/* Gallery Section */
+.gallery-grid.two-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.gallery-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+.section-subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+    font-size: 1.2rem;
 } 
